@@ -1,8 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 
 import LoanItem from '../LoanItem/Index';
 import InvestModal from '../InvestModal/index';
 import InvestContent from '../InvestContent/index';
+
+import { formatCurrencyToNumber, formatCurrencyToString } from '../../utils';
 
 import currentLoans from '../../mocks/currentLoans.json';
 
@@ -11,6 +13,15 @@ import * as Styled from './styled';
 const LoansList = () => {
     const [loans, setLoans] = useState(currentLoans.loans);
     
+    const totalAmount = useMemo(
+    () => loans.reduce((acc, item) => {
+        const available = formatCurrencyToNumber(item.available);
+
+        return acc + available;
+    }, 0),
+    [loans],
+    );
+
     return (
         <>
             <Styled.Wrapper>
@@ -20,7 +31,7 @@ const LoansList = () => {
                 ))}
                 
                 <Styled.TotalData>
-                    Total amount available for investments:
+                    Total amount available for investments: { formatCurrencyToString(totalAmount) }
                 </Styled.TotalData>
             </Styled.Wrapper>
             <InvestModal>
