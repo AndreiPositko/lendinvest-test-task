@@ -1,11 +1,13 @@
 import React from 'react';
 
+import LoansList from '../LoansList';
+
 import { Container } from './styled';
 
 const Layout = () => {
     return (
         <Container>
-            Hello
+            <LoansList/>
         </Container>
     )
 }
