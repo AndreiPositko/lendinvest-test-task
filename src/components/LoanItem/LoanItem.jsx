@@ -4,20 +4,23 @@ import Button from '../Button/index';
 
 import * as Styled from './styled'
 
-const LoanItem = () => {
+const LoanItem = ({ buttonOnClick, data }) => {
+    const { id, title } = data;
+
     return (
         <Styled.Container>
             <Styled.HeaderWrapper>
                 <Styled.Title>
                     loan name
+                     {id}
                 </Styled.Title>
                 <Styled.InvestLabel>Invested</Styled.InvestLabel>
             </Styled.HeaderWrapper>
             <Styled.Content>
                 <Styled.ContentText>
-                    Voluptate et sed tempora qui quisquam.
+                     {title}
                 </Styled.ContentText>
-                <Button>
+                <Button onClick={() => buttonOnClick(id)}>
                     Invest
                 </Button>
             </Styled.Content>
