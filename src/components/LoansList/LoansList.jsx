@@ -35,8 +35,6 @@ const LoansList = () => {
         setIsDisplayedModal(true)
     }
 
-        console.log('-----', activeLoan);
-
     const closeModal = () => {
         setIsDisplayedModal(false)
         setActiveLoan(null);

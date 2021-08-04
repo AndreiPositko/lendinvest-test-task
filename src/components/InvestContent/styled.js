@@ -33,6 +33,14 @@ export const Input = styled.input`
    padding: 0 4px;
 `;
 
+export const ErrorText = styled.span`
+   position: absolute;
+   bottom: -5px;
+   display: block;
+   font-size: 14px;
+   color: red;
+`;
+
 export const BoldSpan = styled.span`
    font-weight: bold;
    margin-left: 7px;
