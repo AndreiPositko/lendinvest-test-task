@@ -1,14 +1,29 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 
 import Button from '../Button';
 
-import { formatCurrencyToNumber, formatCurrencyToString } from '../../utils/index'
+import { formatCurrencyToNumber, formatCurrencyToString, timeRemains } from '../../utils/index'
 
 import * as Styled from './styled'
 
 const InvestContent = ({ handleInvest, activeLoan }) => {
     const [error, setError] = useState(false);
     const [inputValue, setInputValue] = useState('');
+    const [currentTime, setCurrentTime] = useState(parseInt(activeLoan.term_remaining));
+
+    const timer = () => setCurrentTime(currentTime - 1000);
+     useEffect(
+        () => {
+            if (currentTime <= 0) {
+                return;
+            }
+            const id = setInterval(timer, 1000);
+            return () => clearInterval(id);
+        },
+         [currentTime]
+    );
+
+    timeRemains(currentTime);
 
     const availableNumber = useMemo(
         () => activeLoan ? formatCurrencyToNumber(activeLoan.available) : 0,
@@ -61,7 +76,7 @@ const InvestContent = ({ handleInvest, activeLoan }) => {
             <Styled.Text>
                 Loan ends in:
                 <Styled.BoldSpan>
-                    {activeLoan.term_remaining}
+                    {timeRemains(currentTime)}
                 </Styled.BoldSpan>
             </Styled.Text>
             <Styled.Text>Investment amount (£)</Styled.Text>

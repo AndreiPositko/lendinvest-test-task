@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect} from 'react';
 
 import LoanItem from '../LoanItem/Index';
 import InvestModal from '../InvestModal/index';
@@ -11,9 +11,13 @@ import currentLoans from '../../mocks/currentLoans.json';
 import * as Styled from './styled';
 
 const LoansList = () => {
-    const [loans, setLoans] = useState(currentLoans.loans);
+    const [loans, setLoans] = useState([]);
     const [isDisplayedModal, setIsDisplayedModal] = useState(false);
     const [activeLoan, setActiveLoan] = useState(null);
+
+    useEffect(() => {
+        setLoans(currentLoans.loans)
+    }, [])
 
     const totalAmount = useMemo(
         () => loans.reduce((acc, item) => {
@@ -69,7 +73,8 @@ const LoansList = () => {
                     />
                 ))}
                 <Styled.TotalData>
-                    Total amount available for investments: { formatCurrencyToString(totalAmount) }
+                    Total amount available for investments:
+                    <Styled.BoldSpan>{formatCurrencyToString(totalAmount)}</Styled.BoldSpan>
                 </Styled.TotalData>
             </Styled.Wrapper>
             <InvestModal isOpenModal={isDisplayedModal} closeModal={closeModal}>
