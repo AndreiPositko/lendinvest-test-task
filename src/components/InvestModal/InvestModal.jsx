@@ -8,7 +8,7 @@ const InvestModal = ({ children, isOpenModal, closeModal  }) => {
         <Styled.Container isShow={ isOpenModal }>
             <Styled.Overlay onClick={ closeModal }/>
             <Styled.Modal>
-                { children }
+                {isOpenModal && children}
             </Styled.Modal>
         </Styled.Container>
     )

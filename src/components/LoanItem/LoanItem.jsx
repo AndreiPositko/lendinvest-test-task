@@ -14,7 +14,9 @@ const LoanItem = ({ buttonOnClick, data }) => {
                     loan name
                      {id}
                 </Styled.Title>
-                <Styled.InvestLabel>Invested</Styled.InvestLabel>
+                {data.invested && (
+                    <Styled.InvestLabel>Invested</Styled.InvestLabel>
+                )}
             </Styled.HeaderWrapper>
             <Styled.Content>
                 <Styled.ContentText>
