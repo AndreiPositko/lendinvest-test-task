@@ -4,7 +4,7 @@ import { ButtonInvest } from './styled';
 
 const Button = (props) => {
     return (
-        <ButtonInvest {...props}>{ props.children }</ButtonInvest>
+        <ButtonInvest {...props} data-testid='button'>{ props.children }</ButtonInvest>
     )
 }
 
