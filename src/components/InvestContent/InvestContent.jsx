@@ -81,7 +81,7 @@ const InvestContent = ({ handleInvest, activeLoan }) => {
             </Styled.Text>
             <Styled.Text>Investment amount (£)</Styled.Text>
             <Styled.Wrapper>
-                <Styled.Input value={inputValue} placeholder="1,000" onChange={handleInputValue} type="text" error={ error }/>
+                <Styled.Input value={inputValue} placeholder="1,000" onChange={handleInputValue} type="text" error={error} />
                 <Button onClick={clickButtonInvest} disabled={error || !inputValue}>
                     invest
                 </Button>
