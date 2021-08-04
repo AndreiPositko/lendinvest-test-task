@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-   display: none;
+   display: ${(props) => (props.isShow ? 'flex' : 'none')};
    position: fixed;
    top: 0;
    left: 0;

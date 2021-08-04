@@ -2,11 +2,11 @@ import React from 'react';
 
 import * as Styled from './styled'
 
-const InvestModal = ({ children }) => {
+const InvestModal = ({ children, isOpenModal, closeModal  }) => {
 
     return (
-        <Styled.Container>
-            <Styled.Overlay/>
+        <Styled.Container isShow={ isOpenModal }>
+            <Styled.Overlay onClick={ closeModal }/>
             <Styled.Modal>
                 { children }
             </Styled.Modal>

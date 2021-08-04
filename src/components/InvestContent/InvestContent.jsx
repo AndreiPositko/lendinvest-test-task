@@ -1,10 +1,18 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import Button from '../Button';
 
+import { formatCurrencyToNumber } from '../../utils/index'
+
 import * as Styled from './styled'
 
-const InvestContent = () => {
+const InvestContent = ({ handleInvest, activeLoan }) => {
+    const [inputValue, setInputValue] = useState('');
+
+    const clickButtonInvest = () => {
+        handleInvest(activeLoan.id, formatCurrencyToNumber(inputValue));
+        setInputValue('');
+    }
     
     return (
         <>
@@ -21,12 +29,11 @@ const InvestContent = () => {
             <Styled.Text>Investment amount (£)</Styled.Text>
             <Styled.Wrapper>
                 <Styled.Input placeholder="1,000" type="text"/>
-                <Button>
+                <Button onClick={ clickButtonInvest }>
                     invest
                 </Button>
             </Styled.Wrapper>
         </>
-        
     )
 }
 
