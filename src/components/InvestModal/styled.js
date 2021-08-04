@@ -1,5 +1,8 @@
 import styled from 'styled-components';
 
+import colors from '../../styles/variables/colors';
+import padding from '../../styles/variables/padding';
+
 export const Container = styled.div`
    display: ${(props) => (props.isShow ? 'flex' : 'none')};
    position: fixed;
@@ -16,7 +19,7 @@ export const Overlay = styled.div`
    position: absolute;
    width: 100%;
    height: 100%;
-   background-color: rgba(0, 0, 0, 0.7);
+   background-color: ${colors.bgColors.overlay};
    z-index: 1;
 `;
 
@@ -24,7 +27,7 @@ export const Modal = styled.div`
    position: relative;
    width: 340px;
    max-width: 100%;
-   padding: 15px;
-   background-color: #fff;
+   padding: ${padding.padding_15};
+   background-color: ${colors.bgColors.white};
    z-index: 2;
 `;
