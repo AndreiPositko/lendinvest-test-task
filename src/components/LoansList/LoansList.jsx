@@ -63,7 +63,7 @@ const LoansList = () => {
 
     return (
         <>
-            <Styled.Wrapper>
+            <Styled.Wrapper data-testid='loans'>
                 <Styled.Title>current loans</Styled.Title>
                 {loans.map(loan => (
                     <LoanItem
