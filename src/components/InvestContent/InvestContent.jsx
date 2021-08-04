@@ -13,18 +13,22 @@ const InvestContent = ({ handleInvest, activeLoan }) => {
         handleInvest(activeLoan.id, formatCurrencyToNumber(inputValue));
         setInputValue('');
     }
+
+    console.log(activeLoan);
     
     return (
         <>
             <Styled.Title>
-                Voluptate et sed tempora qui quisquam.
+                {activeLoan.title}
             </Styled.Title>
             <Styled.SubTitle>Loan title you've clicked</Styled.SubTitle>
             <Styled.Text>
-                Available: £ 11,959
+                Available:
+                <Styled.BoldSpan>{activeLoan.available}</Styled.BoldSpan>
             </Styled.Text>
             <Styled.Text>
-                Loan ends in: 864000                
+                Loan ends in:
+                 <Styled.BoldSpan>{activeLoan.term_remaining}</Styled.BoldSpan>
             </Styled.Text>
             <Styled.Text>Investment amount (£)</Styled.Text>
             <Styled.Wrapper>

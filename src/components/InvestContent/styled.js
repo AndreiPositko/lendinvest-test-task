@@ -32,3 +32,8 @@ export const Input = styled.input`
    margin-right: 5px;
    padding: 0 4px;
 `;
+
+export const BoldSpan = styled.span`
+   font-weight: bold;
+   margin-left: 7px;
+`;
