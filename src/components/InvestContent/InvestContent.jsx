@@ -4,12 +4,14 @@ import Button from '../Button';
 
 import { formatCurrencyToNumber, formatCurrencyToString, timeRemains } from '../../utils/index'
 
-import * as Styled from './styled'
+import * as Styled from './styled';
 
 const InvestContent = ({ handleInvest, activeLoan }) => {
     const [error, setError] = useState(false);
     const [inputValue, setInputValue] = useState('');
     const [currentTime, setCurrentTime] = useState(parseInt(activeLoan.term_remaining));
+
+    
 
     const timer = () => setCurrentTime(currentTime - 1000);
      useEffect(

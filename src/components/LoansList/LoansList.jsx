@@ -46,19 +46,34 @@ const LoansList = () => {
 
     const handleInvest = (id, investValue) => {
         const newLoans = [...loans];
-        const selectedIndex = newLoans.findIndex(item => item.id === id);
+        const data = newLoans.map(item => {
+            if (item.id === id) {
+                return {
+                    ...item,
+                    available: formatCurrencyToString(formatCurrencyToNumber(item.available) - investValue),
+                    invested: true
+                }
+            } else {
+                return item;
+            }
+        });
 
-        if (selectedIndex === -1) {
-            return;
-        }
-
-        const oldAvailable = newLoans[selectedIndex].available;
-
-        newLoans[selectedIndex].available = formatCurrencyToString(formatCurrencyToNumber(oldAvailable) - investValue);
-        newLoans[selectedIndex].invested = true;
-
-        setLoans(newLoans)
+        setLoans(data)
         closeModal();
+
+        // const selectedIndex = newLoans.findIndex(item => item.id === id);
+
+        // if (selectedIndex === -1) {
+        //     return;
+        // }
+
+        // const oldAvailable = newLoans[selectedIndex].available;
+
+        // newLoans[selectedIndex].available = formatCurrencyToString(formatCurrencyToNumber(oldAvailable) - investValue);
+        // newLoans[selectedIndex].invested = true;
+
+        // setLoans(newLoans)
+        // closeModal();
     }
 
     return (
