@@ -2,13 +2,13 @@ import React from 'react';
 
 import LoansList from '../LoansList';
 
-import { Container } from './styled';
+import * as Styled from './styled';
 
 const Layout = () => {
     return (
-        <Container>
+        <Styled.Container>
             <LoansList/>
-        </Container>
+        </Styled.Container>
     )
 }
 
